@@ -29,18 +29,33 @@ $weObj = new Wechat($options);
 $weObj->valid();
 //$menu = $weObj->getMenu();
 //var_dump($menu);
-//$weObj->deleteMenu();
-$newmenu =  array(
+/*$weObj->deleteMenu();
+
+    		$newmenu =  array(
     		"button"=>
     			array(
-    				array('type'=>'click','name'=>'最新消息','key'=>'MENU_KEY_NEWS'),
-    				array('type'=>'view','name'=>'会员中心','url'=>'http://121.199.55.129/yuechang/wechat/yue/'),
-					array('type'=>'view','name'=>'互动平台','url'=>'http://121.199.55.129/yuechang/wechat/yue/'),
-    				)
+						array('name'=>'会员',"sub_button"=>array(
+						array('type'=>'view','name'=>'会员登录','url'=>'http://121.199.55.129/yuechang/wechat/yue/register.php'),
+						array('type'=>'view','name'=>'积分查询','url'=>'http://121.199.55.129/yuechang/wechat/yue/'),
+						array('type'=>'view','name'=>'积分兑换','url'=>'http://121.199.55.129/yuechang/wechat/yue/'),
+						array('type'=>'view','name'=>'会员卡','url'=>'http://121.199.55.129/yuechang/wechat/yue/')
+							)
+						),
+						array('name'=>'互动',"sub_button"=>array(
+						array('type'=>'view','name'=>'会员圈','url'=>'http://121.199.55.129/yuechang/wechat/yue/'),
+						array('type'=>'view','name'=>'约唱','url'=>'http://121.199.55.129/yuechang/wechat/yue/appointmentlist.php')
+							)
+						),
+						array('name'=>'查询信息',"sub_button"=>array(
+						array('type'=>'view','name'=>'分店信息','url'=>'http://121.199.55.129/yuechang/wechat/yue/'),
+						array('type'=>'view','name'=>'通知','url'=>'http://121.199.55.129/yuechang/wechat/yue/')
+    						)
+    					)
+					)
     		);
   $result = $weObj->createMenu($newmenu);
-//var_dump($result);
 
+var_dump($result);*/
 $rev = $weObj->getRev();
 $type = $rev->getRevType();
 $toName = $rev->getRevTo();
