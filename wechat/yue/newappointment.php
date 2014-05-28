@@ -34,64 +34,33 @@ array('id'=>'1','name'=>'测试约唱','timestamp'=>'2013-01-01','date'=>'2014-0
 ?>
 <?php include 'includes/header.php'; ?>
 <div class="container theme-showcase">
-<div class="control-group">
+<div class="control-group" style='display:none;'>
           <!-- Button -->  
           <div class="controls col-xs-6 col-sm-6 col-md-4">
-             <a href='newappointment.php'><button id='newApt' class="btn btn-success">发起约唱</button></a>
+            <button id='newApt' class="btn btn-success">发起约唱</button>
           </div>
            
           <div class="controls col-xs-6 col-sm-6 col-md-4">
             <a href='myappointment.php'><button id='myApt' class="btn btn-success">我的约唱</button></a>
           </div>
         </div>
-	</div>
-<fieldset>
- <legend class="">约唱列表</legend>
- <?php foreach($appointmentList as $appointment){?>
- <div class='appointment-item col-xs-10 col-sm-6 col-md-4' id='appointment<?php echo $appointment["id"];?>'>
- 
-<div class="new-tile primary-tile">
-	<span class='item-title'><?php echo $appointment['name']?></span><span class='item-sub'><?php echo $appointment['creator']?> 发起于<?php echo $appointment['timestamp']?> </span>
-</div>
-  <div class="tile-plaque">
-    <div class='appointment-address col-sm-4 col-md-4' >
-    	<div>门店：<?php echo $appointment['address']?></div>
-    	<div>房间：<?php echo $appointment['room']?></div>
-    </div>
-    <div class='appointment-address col-sm-4 col-md-4' >
-    	<div>日期：<?php echo $appointment['date']?></div>
-    	<div>时间：<?php echo $appointment['time']?></div>
-    </div>
-    <div class='appointment-time col-sm-4 col-md-4' ></div>
-    <div class='clear'></div>
-  </div>
 
- </div>
- <?php }?>
- </fieldset>
-	<form class="form-horizontal" id=filter method='POST' style='display:none'>
+<form class="form-horizontal" id='register' method='POST'>
 	<input type='hidden' name='postback' value='1' />
     <fieldset>
       <div id="legend" class="">
-        <legend class="">约唱列表</legend>
+        <legend class="">创建约唱</legend>
     <div class="control-group">
           <!-- Text input-->
-          <label class="control-label" for="username">客官雅号</label>
+          <label class="control-label" for="username">描述</label>
           <div class="controls">
-            <input type="text" placeholder="尊姓大名" class="input-xlarge" name='username' id='username'>
+            <input type="text" placeholder="约唱描述" class="input-xlarge" name='username' id='username'>
           </div>
 
-          <!-- Select Basic -->
-          <label class="control-label">一決雌雄</label>
-          <div class="controls">
-            <select class="input-xlarge" name='gender' id='gender'>
-              <option value=''></option>
-              <option value='male'>壯士</option>
-              <option value='female'>女俠</option>
-            </select>
-          </div>
+         
+         
 
-		<label class="control-label">生辰八字</label>
+		<label class="control-label">日期</label>
           <div class="controls">
             <select class="input-xlarge" name='year' id='year'>
             <option value=''></option>
@@ -120,13 +89,12 @@ array('id'=>'1','name'=>'测试约唱','timestamp'=>'2013-01-01','date'=>'2014-0
     <div class="control-group">
           <!-- Button -->
           <div class="controls">
-            <button id='submit' class="btn btn-success">踏入江湖</button>
+            <button id='submit' class="btn btn-success">创建</button>
           </div>
         </div>
 	</div>
     </fieldset>
   </form>
-
 </div>
 <!-- /container -->
 

@@ -34,10 +34,10 @@ array('id'=>'1','name'=>'测试约唱','timestamp'=>'2013-01-01','date'=>'2014-0
 ?>
 <?php include 'includes/header.php'; ?>
 <div class="container theme-showcase">
-<div class="control-group">
+<div class="control-group" style='display:none;'>
           <!-- Button -->  
           <div class="controls col-xs-6 col-sm-6 col-md-4">
-             <a href='newappointment.php'><button id='newApt' class="btn btn-success">发起约唱</button></a>
+            <button id='newApt' class="btn btn-success">发起约唱</button>
           </div>
            
           <div class="controls col-xs-6 col-sm-6 col-md-4">
@@ -46,7 +46,7 @@ array('id'=>'1','name'=>'测试约唱','timestamp'=>'2013-01-01','date'=>'2014-0
         </div>
 	</div>
 <fieldset>
- <legend class="">约唱列表</legend>
+ <legend class="">我发起的约唱</legend>
  <?php foreach($appointmentList as $appointment){?>
  <div class='appointment-item col-xs-10 col-sm-6 col-md-4' id='appointment<?php echo $appointment["id"];?>'>
  
