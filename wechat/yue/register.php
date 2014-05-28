@@ -1,6 +1,5 @@
 <?php include 'includes/settings.php';
-include '../../Util/DB/connector.php';
-include '../yuechang_config.php';
+ include 'DAL/account.php';
 $openid = isset($_COOKIE['OPENID']) ? $_COOKIE['OPENID'] : 0;
 ?>
 <?php $CURRENT_PAGE = 'index';?>
@@ -14,15 +13,11 @@ if(isset($_POST['username']) && isset($_POST['gender'])&& isset($_POST['day']) &
 	$day = $_POST['day'];
 	$time = strtotime("$month/$day/$year");
     $birthday = date('Y-m-d',$time);
-	$db = new DBHelper($config);
-    $db_instance = $db->getInstance();
-    $sql_insert_user = "insert into user (name,gender,birthday,openid) values 
-    ('$username', '$gender','$birthday', '$openid');";
-    
-    $db_instance->exec($sql_insert_user);
-    $uid = $db_instance->lastInsertId ();
+    $accountDAL = new Account_DAL();
+	
+    $uid = $accountDAL->create($username,$gender,$birthday,$openid);
     setcookie('uid',$uid);
-    echo "<div>$username " . ($gender == 'male' ? "壯士" : "女俠"). "，從此江湖中有了你的傳說。。</div>";
+    echo "<div>$username " . ($gender == 'male' ? "壯士" : "女俠"). "，從此江湖中有了你的傳說。。$uid</div>";
     
     //header("location:index.php");
 }
