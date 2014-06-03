@@ -3,7 +3,7 @@
   * wechat php test
   */
 include("wechat.class.php");
-
+//https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx81c05a579d2ab456&redirect_uri=http://121.199.55.129/yuechang/wechat/oauth_service.php&response_type=code&scope=snsapi_userinfo&state=123#wechat_redirect
 //define your token
 define("TOKEN", "2whxNVF5jt"); //thjcj
 //$wechatObj = new wechatCallbackapiTest();
@@ -27,6 +27,10 @@ $options = array(
 );
 $weObj = new Wechat($options);
 $weObj->valid();
+//$redir = urlencode("http://121.199.55.129/yuechang/wechat/oauth_service.php");
+//$oauth_url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx81c05a579d2ab456&redirect_uri="
+//. $redir 
+//."&response_type=code&scope=snsapi_userinfo&state=123#wechat_redirect";
 //$menu = $weObj->getMenu();
 //var_dump($menu);
 /*$weObj->deleteMenu();
@@ -48,13 +52,15 @@ $weObj->valid();
 						),
 						array('name'=>'查询信息',"sub_button"=>array(
 						array('type'=>'view','name'=>'分店信息','url'=>'http://121.199.55.129/yuechang/wechat/yue/'),
-						array('type'=>'view','name'=>'通知','url'=>'http://121.199.55.129/yuechang/wechat/yue/')
+						array('type'=>'view','name'=>'通知','url'=>'http://121.199.55.129/yuechang/wechat/yue/'),
+						array('type'=>'view','name'=>'测试认证url','url'=>'http://121.199.55.129/yuechang/wechat/oauth_service.php'),
+						//array('type'=>'view','name'=>'测试认证','url'=>$oauth_url)
     						)
     					)
 					)
     		);
   $result = $weObj->createMenu($newmenu);
-
+var_dump($newmenu);
 var_dump($result);*/
 $rev = $weObj->getRev();
 $type = $rev->getRevType();
