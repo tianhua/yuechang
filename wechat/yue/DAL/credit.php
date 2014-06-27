@@ -1,6 +1,6 @@
 <?php
 include_once '../../Util/DB/connector.php';
-class Account_DAL
+class Credit_DAL
 {
 	private $instance = NULL;
 	function __construct(){
@@ -9,11 +9,11 @@ class Account_DAL
 		$this->instance = $helper->getInstance();
 	}
 	
-	public function create($username,$gender,$birthday,$openid){
-		$sql_insert_user = "insert into user (name,gender,birthday,openid) values 
-    ('$username', '$gender','$birthday', '$openid');";
+	public function add($uid, $ammount, $expiration = null, $type = 0){
+		$sql_insert_credit = "insert into credit (uid,amount,expiration,type) values 
+    ('$uid', '$ammount','$expiration', '$type');";
 
-    $this->instance->exec($sql_insert_user);
+    $this->instance->exec($sql_insert_credit);
     $uid = $this->instance->lastInsertId ();
 
     return $uid;

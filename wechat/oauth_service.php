@@ -14,5 +14,5 @@ $code = $_GET['code'];
 $json = $weObj->getOauthAccessToken();
 $openid = $json['openid'];
 setcookie('YUECHANG_OPENID',$openid);
-header('Location: yue/register.php');
+header('Location: http://121.199.55.129:8000/user/register?openid='.$openid);//yue/register.php
 ?>

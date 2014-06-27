@@ -1,3 +1,26 @@
+<?php 
+include_once 'settings.php';
+include_once dirname(__FILE__) . '/../DAL/account.php';
+$openid = isset($_COOKIE['YUECHANG_OPENID']) ? $_COOKIE['YUECHANG_OPENID'] : 0;
+$accountDAL = new Account_DAL();
+//$openid =1;
+$user_rst = $accountDAL->getUserByOpenId($openid);
+if($user_rst && $rows = $user_rst->fetchAll())
+{
+  $user = $rows[0];		
+}
+if(!$user)
+{
+	if(isset($_SERVER['REQUEST_URI'])&& strpos($_SERVER['REQUEST_URI'], 'register.php') === false )
+	{
+		header('Location: register.php');
+	}
+	
+}
+
+$userID = $user['id'];
+setcookie('yuechang_uid',$userID);
+?>
 <!DOCTYPE html> 
 <html lang="en">
   <head>

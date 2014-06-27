@@ -1,5 +1,5 @@
-<?php include 'includes/settings.php';
- include 'DAL/account.php';
+<?php include_once 'includes/settings.php';
+ include_once 'DAL/account.php';
 $openid = isset($_COOKIE['YUECHANG_OPENID']) ? $_COOKIE['YUECHANG_OPENID'] : 0;
 ?>
 <?php $CURRENT_PAGE = 'index';?>
@@ -16,7 +16,7 @@ if(isset($_POST['username']) && isset($_POST['gender'])&& isset($_POST['day']) &
     $accountDAL = new Account_DAL();
 	
     $uid = $accountDAL->create($username,$gender,$birthday,$openid);
-    setcookie('uid',$uid);
+    setcookie('yuechang_uid',$uid);
     echo "<div>$username " . ($gender == 'male' ? "壯士" : "女俠"). "，從此江湖中有了你的傳說。。</div>";
     
     //header("location:index.php");
